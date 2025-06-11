@@ -20,6 +20,15 @@
                 } 
             });
         }
+            function create_directory(){
+                let directory_name = document.getElementById('directory').value;
+
+                fetch('http://localhost:3000/createDirectory', {
+                    method: 'POST',
+                    headers: {'Content-type' : 'application/json'},
+                    body: JSON.stringify({'dirName': directory_name}),
+                })
+            }
     </script>
 <head>
     <meta charset="UTF-8">
@@ -35,6 +44,12 @@
         <textarea id="text" name="text" rows="10" cols="50"></textarea><br>
 
         <button onclick="submit()">SUBMIT</button>
+    </div>
+    <div>
+        <label>Create directory:</label>
+        <input type="text" placeholder="directory name" id="directory">
+
+        <button onclick="create_directory()">CREATE</button>
     </div>
 </body>
 </html>
