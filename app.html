@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script>
+        async function submit(){
+
+            let title = document.getElementById('name').value;
+            let text = document.getElementById('text').value;
+
+           await fetch('http://localhost:3000/data', {
+                method:'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({'title': title,
+                    'text':text,})
+            })
+            .then((response) =>{
+                if(response){
+                   alert(response.statusText);
+                } 
+            });
+        }
+    </script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="input">
+        <label>Insira o título da nota:</label><br>
+        <input type="text" placeholder="title" id="name"><br>
+
+        <label>Texto:</label><br>
+        <textarea id="text" name="text" rows="10" cols="50"></textarea><br>
+
+        <button onclick="submit()">SUBMIT</button>
+    </div>
+</body>
+</html>
